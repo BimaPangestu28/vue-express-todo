@@ -3,6 +3,7 @@ require('dotenv').config()
 const express       = require('express')
 const app           = express()
 const bodyParser    = require('body-parser')
+const cors          = require('cors')
 
 const index         = require('./modules/todo')
 const create        = require('./modules/todo/create')
@@ -12,6 +13,7 @@ const update        = require('./modules/todo/update')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/', index)
 app.post('/', create)
